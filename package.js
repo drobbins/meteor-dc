@@ -1,17 +1,19 @@
 Package.describe({
-  name: 'dc',
-  summary: ' /* Fill me in! */ ',
-  version: '1.0.0',
-  git: ' /* Fill me in! */ '
+  name: 'robbinsd:dc',
+  summary: 'Multi-Dimensional charting built to work natively with crossfilter rendered with d3.js',
+  version: '1.7.1',
+  git: 'https://github.com/drobbins/meteor-dc.git'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('undefined');
-  api.addFiles('dc.js');
+  api.versionsFrom('METEOR@0.9.4');
+  api.use(['sergeyt:d3','pfafman:crossfilter'], 'client');
+  if (api.export) api.export("dc", "client");
+  api.addFiles('dc.js', 'client');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('dc');
-  api.addFiles('dc-tests.js');
+  api.use('robbinsd:dc');
+  api.addFiles('dc-tests.js', 'client');
 });
