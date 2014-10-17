@@ -7,7 +7,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.4');
-  api.use(['sergeyt:d3','pfafman:crossfilter'], 'client');
+  api.use(['sergeyt:d3@3.4.1','pfafman:crossfilter@1.3.9'], 'client');
   if (api.export) api.export("dc", "client");
   api.addFiles('dc.js', 'client');
 });
