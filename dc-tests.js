@@ -1,10 +1,5 @@
 // Write your tests here!
 // Here is an example.
-Tinytest.add('exposes dc', function (test) {
-  test.isNotNull(dc);
-});
-
-Tinytest.add('includes d3 and crossfilter', function (test) {
-  test.isNotNull(d3);
-  test.isNotNull(crossfilter);
+Tinytest.add("Includes dc.js version 1.7.0", function (test) {
+  test.equal(dc.version, "1.7.0");
 });
