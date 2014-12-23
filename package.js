@@ -1,7 +1,7 @@
 Package.describe({
   name: "robbinsd:dc",
   summary: "Multi-Dimensional charting built to work natively with crossfilter rendered with d3.js",
-  version: "1.7.2",
+  version: "1.7.3",
   git: "https://github.com/drobbins/meteor-dc.git"
 });
 
