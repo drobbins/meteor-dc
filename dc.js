@@ -1,5 +1,5 @@
 /*!
- *  dc 1.7.0
+ *  dc 1.7.2
  *  http://dc-js.github.io/dc.js/
  *  Copyright 2012 Nick Zhu and other contributors
  *
@@ -16,11 +16,11 @@
  *  limitations under the License.
  */
 
-(function() { function _dc(d3) {
+(function() { function _dc(d3, crossfilter) {
 'use strict';
 
 /**
-#### Version 1.7.0
+#### Version 1.7.2
 
 The entire dc.js library is scoped under **dc** name space. It does not introduce anything else into the global
 name space.
@@ -57,7 +57,7 @@ The API references will highlight the fact if a particular function is not chain
 
 **/
 var dc = {
-    version: "1.7.0",
+    version: "1.7.2",
     constants: {
         CHART_CLASS: "dc-chart",
         DEBUG_GROUP_CLASS: "debug",
@@ -5399,12 +5399,15 @@ dc.numberDisplay = function (parent, chartGroup) {
 
 
 return dc;}
-if(typeof define === "function" && define.amd) {
-  define(["d3"], _dc);
-} else if(typeof module === "object" && module.exports) {
-  module.exports = _dc(d3);
-} else {
-  this.dc = _dc(d3);
-}
+    if(typeof define === "function" && define.amd) {
+        define(["d3", "crossfilter"], _dc);
+    } else if(typeof module === "object" && module.exports) {
+        // When using window global, window.crossfilter is a function
+        // When using require, the value will be an object with 'crossfilter'
+        // field, so we need to access it here.
+        module.exports = _dc(require('d3'), require('crossfilter').crossfilter);
+    } else {
+        this.dc = _dc(d3, crossfilter);
+    }
 }
 )();
